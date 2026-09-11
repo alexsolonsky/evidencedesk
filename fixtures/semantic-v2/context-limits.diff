@@ -1,0 +1,7 @@
+diff --git a/access.py b/access.py
+--- a/access.py
++++ b/access.py
+@@ -20,2 +20,2 @@
+-if user.is_admin:
++if user.is_admin or allow_preview:
+     return load_report()

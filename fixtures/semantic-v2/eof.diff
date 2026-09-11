@@ -1,0 +1,15 @@
+diff --git a/message.txt b/message.txt
+--- a/message.txt
++++ b/message.txt
+@@ -1,2 +1,2 @@
+-first
++updated
+ last
+\ No newline at end of file
+diff --git a/end.txt b/end.txt
+--- a/end.txt
++++ b/end.txt
+@@ -1 +1 @@
+-old
++new
+\ No newline at end of file

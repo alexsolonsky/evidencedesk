@@ -1,0 +1,128 @@
+{
+  "review": {
+    "claims": [
+      {
+        "claim": "The timeout_seconds configuration value was increased from 10 to 30.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-50246170ed2972255ea0",
+          "E-2a246645047a3f8279bb"
+        ],
+        "rationale": "The diff shows the removal of 'timeout_seconds = 10' and the addition of 'timeout_seconds = 30' at line 1, directly confirming the value change."
+      },
+      {
+        "claim": "A new retry_limit configuration was added with a value of 3.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-d0a3cbb25384ffe37a42"
+        ],
+        "rationale": "The evidence shows the addition of 'retry_limit = 3' at line 2, confirming the introduction of this new configuration parameter."
+      },
+      {
+        "claim": "The code changes improve runtime performance.",
+        "status": "uncertain",
+        "evidence_ids": [],
+        "rationale": "The diff only provides textual changes. Performance implications depend on execution context and are not visible in the source code diff."
+      }
+    ]
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "structural_review_validation",
+    "structurally_valid": true,
+    "semantic_truth_checked": false,
+    "notice": "Checks JSON structure and reference existence only. Does not establish that citations support claims or that claims are true.",
+    "claim_count": 3,
+    "evidence_id_count": 3,
+    "errors": []
+  },
+  "evidence_index": {
+    "E-50246170ed2972255ea0": {
+      "path": "config.py",
+      "side": "old",
+      "line": 1,
+      "text": "timeout_seconds = 10",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-2a246645047a3f8279bb": {
+      "path": "config.py",
+      "side": "new",
+      "line": 1,
+      "text": "timeout_seconds = 30",
+      "kind": "added",
+      "no_newline_at_eof": false
+    },
+    "E-d0a3cbb25384ffe37a42": {
+      "path": "config.py",
+      "side": "new",
+      "line": 2,
+      "text": "retry_limit = 3",
+      "kind": "added",
+      "no_newline_at_eof": false
+    }
+  },
+  "provenance": {
+    "kind": "live_local_ollama",
+    "model": "qwen3.6:35b",
+    "model_digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "endpoint": "http://127.0.0.1:11434",
+    "created_at": "2026-09-11T15:45:04.795981+00:00",
+    "elapsed_seconds": 4.192,
+    "evidence_sha256": "6f3fed64af440f178082c9e238d3b7cd7c28e19008dd42a2bdae79e497426301",
+    "model_input_sha256": "655c3ea6dc0aabb3326ef032baf4ff95489cd2f13244375f9801b57248e6f0ef",
+    "model_scope": "citable_changed_text_only",
+    "prompt_eval_count": 655,
+    "eval_count": 320,
+    "cloud_used": false,
+    "fixture_used": false,
+    "semantic_truth_checked": false
+  },
+  "evidence_pack": {
+    "schema_version": 1,
+    "kind": "deterministic_git_diff_evidence",
+    "is_ai_review": false,
+    "changed_file_count": 1,
+    "text_added_count": 2,
+    "text_removed_count": 1,
+    "files": [
+      {
+        "old_path": "config.py",
+        "new_path": "config.py",
+        "status": "modified",
+        "binary": false,
+        "metadata": [],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 1,
+            "text": "timeout_seconds = 30",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-2a246645047a3f8279bb"
+          },
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 2,
+            "text": "retry_limit = 3",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-d0a3cbb25384ffe37a42"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 1,
+            "new_line": null,
+            "text": "timeout_seconds = 10",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-50246170ed2972255ea0"
+          }
+        ],
+        "text_added_count": 2,
+        "text_removed_count": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "review": {
+    "claims": [
+      {
+        "claim": "A new file named 'new.txt' was added containing the lines 'hello' and 'last'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-80e7d61e9697f6282d6c",
+          "E-7576363760812b4487f6"
+        ],
+        "rationale": "The diff explicitly lists 'new.txt' with status 'added' and includes two added lines with the text 'hello' and 'last' respectively."
+      },
+      {
+        "claim": "The file 'gone.txt' was deleted, removing the lines 'gone' and 'also gone'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-02fda17ff6b7fc0b7cdd",
+          "E-78e82b143d4bca5949d2"
+        ],
+        "rationale": "The diff lists 'gone.txt' with status 'deleted' and shows two removed lines containing the text 'gone' and 'also gone'."
+      },
+      {
+        "claim": "The file 'old name.py' was renamed to 'new name.py' with a 90% similarity index.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-16e9ac27ce2c31c3ce66",
+          "E-08f10bbcb1ecca4738c3"
+        ],
+        "rationale": "The file entry shows a rename from 'old name.py' to 'new name.py' with metadata indicating a 90% similarity index, along with one line removed ('before') and one added ('after')."
+      },
+      {
+        "claim": "The binary file 'image.png' was modified.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-1111111..2222222"
+        ],
+        "rationale": "The file entry for 'image.png' has status 'modified' and binary true, with metadata showing an index change from 1111111 to 2222222."
+      },
+      {
+        "claim": "The executable permissions for 'run.sh' were changed from 644 to 755.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-100644_old_mode",
+          "E-100755_new_mode"
+        ],
+        "rationale": "The metadata for 'run.sh' explicitly lists 'old mode 100644' and 'new mode 100755', indicating a permission change to make it executable."
+      },
+      {
+        "claim": "The changes in 'run.sh' ensure the script is safe to execute in production.",
+        "status": "uncertain",
+        "evidence_ids": [],
+        "rationale": "A diff only shows metadata changes (permissions) and not content or runtime behavior; safety cannot be determined from file mode changes alone."
+      }
+    ]
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "structural_review_validation",
+    "structurally_valid": false,
+    "semantic_truth_checked": false,
+    "notice": "Checks JSON structure and reference existence only. Does not establish that citations support claims or that claims are true.",
+    "claim_count": 6,
+    "evidence_id_count": 6,
+    "errors": [
+      {
+        "path": "review.claims[3].evidence_ids[0]",
+        "message": "Unknown evidence ID: E-1111111..2222222"
+      },
+      {
+        "path": "review.claims[4].evidence_ids[0]",
+        "message": "Unknown evidence ID: E-100644_old_mode"
+      },
+      {
+        "path": "review.claims[4].evidence_ids[1]",
+        "message": "Unknown evidence ID: E-100755_new_mode"
+      }
+    ]
+  },
+  "evidence_index": {
+    "E-80e7d61e9697f6282d6c": {
+      "path": "new.txt",
+      "side": "new",
+      "line": 1,
+      "text": "hello",
+      "kind": "added",
+      "no_newline_at_eof": false
+    },
+    "E-7576363760812b4487f6": {
+      "path": "new.txt",
+      "side": "new",
+      "line": 2,
+      "text": "last",
+      "kind": "added",
+      "no_newline_at_eof": true
+    },
+    "E-02fda17ff6b7fc0b7cdd": {
+      "path": "gone.txt",
+      "side": "old",
+      "line": 1,
+      "text": "gone",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-78e82b143d4bca5949d2": {
+      "path": "gone.txt",
+      "side": "old",
+      "line": 2,
+      "text": "also gone",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-16e9ac27ce2c31c3ce66": {
+      "path": "old name.py",
+      "side": "old",
+      "line": 11,
+      "text": "before",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-08f10bbcb1ecca4738c3": {
+      "path": "new name.py",
+      "side": "new",
+      "line": 21,
+      "text": "after",
+      "kind": "added",
+      "no_newline_at_eof": false
+    }
+  },
+  "provenance": {
+    "kind": "live_local_ollama",
+    "model": "qwen3.6:35b",
+    "model_digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "endpoint": "http://127.0.0.1:11434",
+    "created_at": "2026-09-11T15:38:07.945536+00:00",
+    "elapsed_seconds": 28.832,
+    "evidence_sha256": "07861b0d7b589a1612c9825aff06723fc8cced012d4b3db9e6c346f49c376a89",
+    "prompt_eval_count": 1076,
+    "eval_count": 756,
+    "cloud_used": false,
+    "fixture_used": false,
+    "semantic_truth_checked": false
+  },
+  "evidence_pack": {
+    "schema_version": 1,
+    "kind": "deterministic_git_diff_evidence",
+    "is_ai_review": false,
+    "changed_file_count": 5,
+    "text_added_count": 3,
+    "text_removed_count": 3,
+    "files": [
+      {
+        "old_path": null,
+        "new_path": "new.txt",
+        "status": "added",
+        "binary": false,
+        "metadata": [
+          "new file mode 100644"
+        ],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 1,
+            "text": "hello",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-80e7d61e9697f6282d6c"
+          },
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 2,
+            "text": "last",
+            "no_newline_at_eof": true,
+            "evidence_id": "E-7576363760812b4487f6"
+          }
+        ],
+        "removed_lines": [],
+        "text_added_count": 2,
+        "text_removed_count": 0
+      },
+      {
+        "old_path": "gone.txt",
+        "new_path": null,
+        "status": "deleted",
+        "binary": false,
+        "metadata": [
+          "deleted file mode 100644"
+        ],
+        "added_lines": [],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 1,
+            "new_line": null,
+            "text": "gone",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-02fda17ff6b7fc0b7cdd"
+          },
+          {
+            "kind": "removed",
+            "old_line": 2,
+            "new_line": null,
+            "text": "also gone",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-78e82b143d4bca5949d2"
+          }
+        ],
+        "text_added_count": 0,
+        "text_removed_count": 2
+      },
+      {
+        "old_path": "old name.py",
+        "new_path": "new name.py",
+        "status": "renamed",
+        "binary": false,
+        "metadata": [
+          "similarity index 90%"
+        ],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 21,
+            "text": "after",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-08f10bbcb1ecca4738c3"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 11,
+            "new_line": null,
+            "text": "before",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-16e9ac27ce2c31c3ce66"
+          }
+        ],
+        "text_added_count": 1,
+        "text_removed_count": 1
+      },
+      {
+        "old_path": "image.png",
+        "new_path": "image.png",
+        "status": "modified",
+        "binary": true,
+        "metadata": [
+          "index 1111111..2222222 100644"
+        ],
+        "added_lines": [],
+        "removed_lines": [],
+        "text_added_count": 0,
+        "text_removed_count": 0
+      },
+      {
+        "old_path": "run.sh",
+        "new_path": "run.sh",
+        "status": "modified",
+        "binary": false,
+        "metadata": [
+          "old mode 100644",
+          "new mode 100755"
+        ],
+        "added_lines": [],
+        "removed_lines": [],
+        "text_added_count": 0,
+        "text_removed_count": 0
+      }
+    ]
+  }
+}

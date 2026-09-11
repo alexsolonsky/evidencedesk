@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "kind": "deterministic_git_diff_evidence",
+  "is_ai_review": false,
+  "changed_file_count": 5,
+  "text_added_count": 3,
+  "text_removed_count": 3,
+  "files": [
+    {
+      "old_path": null,
+      "new_path": "new.txt",
+      "status": "added",
+      "binary": false,
+      "metadata": [
+        "new file mode 100644"
+      ],
+      "added_lines": [
+        {
+          "kind": "added",
+          "old_line": null,
+          "new_line": 1,
+          "text": "hello",
+          "no_newline_at_eof": false,
+          "evidence_id": "E-80e7d61e9697f6282d6c"
+        },
+        {
+          "kind": "added",
+          "old_line": null,
+          "new_line": 2,
+          "text": "last",
+          "no_newline_at_eof": true,
+          "evidence_id": "E-7576363760812b4487f6"
+        }
+      ],
+      "removed_lines": [],
+      "text_added_count": 2,
+      "text_removed_count": 0
+    },
+    {
+      "old_path": "gone.txt",
+      "new_path": null,
+      "status": "deleted",
+      "binary": false,
+      "metadata": [
+        "deleted file mode 100644"
+      ],
+      "added_lines": [],
+      "removed_lines": [
+        {
+          "kind": "removed",
+          "old_line": 1,
+          "new_line": null,
+          "text": "gone",
+          "no_newline_at_eof": false,
+          "evidence_id": "E-02fda17ff6b7fc0b7cdd"
+        },
+        {
+          "kind": "removed",
+          "old_line": 2,
+          "new_line": null,
+          "text": "also gone",
+          "no_newline_at_eof": false,
+          "evidence_id": "E-78e82b143d4bca5949d2"
+        }
+      ],
+      "text_added_count": 0,
+      "text_removed_count": 2
+    },
+    {
+      "old_path": "old name.py",
+      "new_path": "new name.py",
+      "status": "renamed",
+      "binary": false,
+      "metadata": [
+        "similarity index 90%"
+      ],
+      "added_lines": [
+        {
+          "kind": "added",
+          "old_line": null,
+          "new_line": 21,
+          "text": "after",
+          "no_newline_at_eof": false,
+          "evidence_id": "E-08f10bbcb1ecca4738c3"
+        }
+      ],
+      "removed_lines": [
+        {
+          "kind": "removed",
+          "old_line": 11,
+          "new_line": null,
+          "text": "before",
+          "no_newline_at_eof": false,
+          "evidence_id": "E-16e9ac27ce2c31c3ce66"
+        }
+      ],
+      "text_added_count": 1,
+      "text_removed_count": 1
+    },
+    {
+      "old_path": "image.png",
+      "new_path": "image.png",
+      "status": "modified",
+      "binary": true,
+      "metadata": [
+        "index 1111111..2222222 100644"
+      ],
+      "added_lines": [],
+      "removed_lines": [],
+      "text_added_count": 0,
+      "text_removed_count": 0
+    },
+    {
+      "old_path": "run.sh",
+      "new_path": "run.sh",
+      "status": "modified",
+      "binary": false,
+      "metadata": [
+        "old mode 100644",
+        "new mode 100755"
+      ],
+      "added_lines": [],
+      "removed_lines": [],
+      "text_added_count": 0,
+      "text_removed_count": 0
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "review": {
+    "claims": [
+      {
+        "claim": "The first line of message.txt was changed from 'first' to 'updated'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-af609c7657525c2dcc59",
+          "E-21485a9e841a87f256b2"
+        ],
+        "rationale": "The diff explicitly shows the removal of 'first' and addition of 'updated' at line 1 in message.txt."
+      },
+      {
+        "claim": "The first line of end.txt was changed from 'old' to 'new'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-aa96b128c47b43b185e3",
+          "E-68dfb5e6703999f15d14"
+        ],
+        "rationale": "The diff explicitly shows the removal of 'old' and addition of 'new' at line 1 in end.txt."
+      },
+      {
+        "claim": "The file end.txt now lacks a trailing newline.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-68dfb5e6703999f15d14"
+        ],
+        "rationale": "The evidence ID E-68dfb5e6703999f15d14 has no_newline_at_eof set to true, indicating the absence of a trailing newline."
+      }
+    ]
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "structural_review_validation",
+    "structurally_valid": true,
+    "semantic_truth_checked": false,
+    "notice": "Checks JSON structure and reference existence only. Does not establish that citations support claims or that claims are true.",
+    "claim_count": 3,
+    "evidence_id_count": 4,
+    "errors": []
+  },
+  "evidence_index": {
+    "E-af609c7657525c2dcc59": {
+      "path": "message.txt",
+      "side": "old",
+      "line": 1,
+      "text": "first",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-21485a9e841a87f256b2": {
+      "path": "message.txt",
+      "side": "new",
+      "line": 1,
+      "text": "updated",
+      "kind": "added",
+      "no_newline_at_eof": false
+    },
+    "E-aa96b128c47b43b185e3": {
+      "path": "end.txt",
+      "side": "old",
+      "line": 1,
+      "text": "old",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-68dfb5e6703999f15d14": {
+      "path": "end.txt",
+      "side": "new",
+      "line": 1,
+      "text": "new",
+      "kind": "added",
+      "no_newline_at_eof": true
+    }
+  },
+  "provenance": {
+    "kind": "live_local_ollama",
+    "model": "qwen3.6:35b",
+    "model_digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "endpoint": "http://127.0.0.1:11434",
+    "created_at": "2026-09-11T16:29:26.575853+00:00",
+    "elapsed_seconds": 16.225,
+    "evidence_sha256": "8f41ec80cd43a19522f39de1ee8cf6f7f0447d525173fcf46bbb17677b895665",
+    "model_input_sha256": "d483c94089ecc8cfc39c602a9bac352f25dcb2bf57a910b7ec27868d6db42691",
+    "model_scope": "citable_changed_text_only",
+    "prompt_eval_count": 707,
+    "eval_count": 385,
+    "cloud_used": false,
+    "fixture_used": false,
+    "semantic_truth_checked": false
+  },
+  "evidence_pack": {
+    "schema_version": 1,
+    "kind": "deterministic_git_diff_evidence",
+    "is_ai_review": false,
+    "changed_file_count": 2,
+    "text_added_count": 2,
+    "text_removed_count": 2,
+    "files": [
+      {
+        "old_path": "message.txt",
+        "new_path": "message.txt",
+        "status": "modified",
+        "binary": false,
+        "metadata": [],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 1,
+            "text": "updated",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-21485a9e841a87f256b2"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 1,
+            "new_line": null,
+            "text": "first",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-af609c7657525c2dcc59"
+          }
+        ],
+        "text_added_count": 1,
+        "text_removed_count": 1
+      },
+      {
+        "old_path": "end.txt",
+        "new_path": "end.txt",
+        "status": "modified",
+        "binary": false,
+        "metadata": [],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 1,
+            "text": "new",
+            "no_newline_at_eof": true,
+            "evidence_id": "E-68dfb5e6703999f15d14"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 1,
+            "new_line": null,
+            "text": "old",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-aa96b128c47b43b185e3"
+          }
+        ],
+        "text_added_count": 1,
+        "text_removed_count": 1
+      }
+    ]
+  }
+}

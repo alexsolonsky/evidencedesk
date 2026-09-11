@@ -1,0 +1,31 @@
+diff --git a/new.txt b/new.txt
+new file mode 100644
+--- /dev/null
++++ b/new.txt
+@@ -0,0 +1,2 @@
++hello
++last
+\ No newline at end of file
+diff --git a/gone.txt b/gone.txt
+deleted file mode 100644
+--- a/gone.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-gone
+-also gone
+diff --git a/old name.py b/new name.py
+similarity index 90%
+rename from old name.py
+rename to new name.py
+--- a/old name.py
++++ b/new name.py
+@@ -10,2 +20,2 @@ function
+ context
+-before
++after
+diff --git a/image.png b/image.png
+index 1111111..2222222 100644
+Binary files a/image.png and b/image.png differ
+diff --git a/run.sh b/run.sh
+old mode 100644
+new mode 100755

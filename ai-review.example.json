@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "claim": "The new text file contains hello followed by last.",
+      "status": "supported",
+      "evidence_ids": ["E-80e7d61e9697f6282d6c", "E-7576363760812b4487f6"],
+      "rationale": "The added lines in new.txt have new line numbers 1 and 2 and contain exactly those strings."
+    },
+    {
+      "claim": "The new text file ends with a newline.",
+      "status": "unsupported",
+      "evidence_ids": ["E-7576363760812b4487f6"],
+      "rationale": "The last added line explicitly has no_newline_at_eof=true, contradicting the claim."
+    },
+    {
+      "claim": "The renamed Python file now runs faster.",
+      "status": "uncertain",
+      "evidence_ids": ["E-16e9ac27ce2c31c3ce66", "E-08f10bbcb1ecca4738c3"],
+      "rationale": "The evidence only replaces the text before with after. It contains neither a performance-relevant implementation nor benchmark results, so it cannot establish a speed improvement."
+    },
+    {
+      "claim": "The updated image has better contrast.",
+      "status": "uncertain",
+      "evidence_ids": [],
+      "rationale": "image.png is marked as a binary change. Its pixel contents are absent from this evidence pack; there is no visual basis for judging contrast."
+    }
+  ]
+}

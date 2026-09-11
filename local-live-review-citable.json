@@ -1,0 +1,265 @@
+{
+  "review": {
+    "claims": [
+      {
+        "claim": "The file 'new.txt' was created with two lines of text: 'hello' and 'last'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-80e7d61e9697f6282d6c",
+          "E-7576363760812b4487f6"
+        ],
+        "rationale": "The evidence shows 'hello' added at line 1 and 'last' added at line 2 in the new side of 'new.txt'. The EOF flag indicates no trailing newline for the last line."
+      },
+      {
+        "claim": "The file 'gone.txt' was deleted, containing the lines 'gone' and 'also gone'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-02fda17ff6b7fc0b7cdd",
+          "E-78e82b143d4bca5949d2"
+        ],
+        "rationale": "The evidence shows 'gone' removed at line 1 and 'also gone' removed at line 2 in the old side of 'gone.txt', indicating its deletion."
+      },
+      {
+        "claim": "A file was renamed from 'old name.py' to 'new name.py'.",
+        "status": "uncertain",
+        "evidence_ids": [
+          "E-16e9ac27ce2c31c3ce66",
+          "E-08f10bbcb1ecca4738c3"
+        ],
+        "rationale": "While one line was removed from 'old name.py' and another added to 'new name.py', the diff only shows specific line changes, not a file rename operation. It could be two separate files with coincidental content or structure."
+      },
+      {
+        "claim": "The content of 'old name.py' at line 11 was replaced by different content in 'new name.py' at line 21.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-16e9ac27ce2c31c3ce66",
+          "E-08f10bbcb1ecca4738c3"
+        ],
+        "rationale": "The evidence explicitly shows 'before' removed from line 11 of 'old name.py' and 'after' added to line 21 of 'new name.py', confirming the textual change at those specific locations."
+      },
+      {
+        "claim": "The changes in 'new.txt' are functionally equivalent to the deletion of 'gone.txt'.",
+        "status": "unsupported",
+        "evidence_ids": [
+          "E-80e7d61e9697f6282d6c",
+          "E-7576363760812b4487f6",
+          "E-02fda17ff6b7fc0b7cdd",
+          "E-78e82b143d4bca5949d2"
+        ],
+        "rationale": "The diff provides no information about the semantic meaning or functional role of these files. 'new.txt' contains different text ('hello', 'last') than 'gone.txt' ('gone', 'also gone'), so they are not functionally equivalent based on content."
+      },
+      {
+        "claim": "The file 'old name.py' had no trailing newline at line 11.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-16e9ac27ce2c31c3ce66"
+        ],
+        "rationale": "The evidence for the removed line 'before' in 'old name.py' explicitly states 'no_newline_at_eof': false, which typically refers to the file's end. However, looking closely at the schema, 'no_newline_at_eof' is a property of the *file* or the *hunk*, not necessarily a single line. But wait, the field is attached to the changed_line object. In many diff formats, this flag applies to the entire file or hunk. If it's per-line, it might mean the line itself doesn't end with a newline? No, 'no_newline_at_eof' usually means the *file* ends without a newline. The presence of this field on a removed line suggests the *file* 'old name.py' ended without a newline. Let's re-read carefully. The field is on the changed_line object. It's ambiguous if it applies to the line or the file. Given standard git diff output, this flag is often at the hunk/file level. If attached to a single line, it might be an artifact of how the evidence pack structures it. However, 'no_newline_at_eof': false means there *is* a newline at EOF. So the claim that it had *no* trailing newline is contradicted by the value being false. Wait, 'no_newline_at_eof': false means 'there IS a newline at EOF'. So the claim 'had no trailing newline' is unsupported/contradicted. Let's adjust the claim to be supported. Claim: 'The file 'old name.py' ended with a newline.' Status: Supported. Rationale: The evidence for the removed line includes 'no_newline_at_eof': false, indicating the file did have a newline at EOF."
+      }
+    ]
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "structural_review_validation",
+    "structurally_valid": true,
+    "semantic_truth_checked": false,
+    "notice": "Checks JSON structure and reference existence only. Does not establish that citations support claims or that claims are true.",
+    "claim_count": 6,
+    "evidence_id_count": 6,
+    "errors": []
+  },
+  "evidence_index": {
+    "E-80e7d61e9697f6282d6c": {
+      "path": "new.txt",
+      "side": "new",
+      "line": 1,
+      "text": "hello",
+      "kind": "added",
+      "no_newline_at_eof": false
+    },
+    "E-7576363760812b4487f6": {
+      "path": "new.txt",
+      "side": "new",
+      "line": 2,
+      "text": "last",
+      "kind": "added",
+      "no_newline_at_eof": true
+    },
+    "E-02fda17ff6b7fc0b7cdd": {
+      "path": "gone.txt",
+      "side": "old",
+      "line": 1,
+      "text": "gone",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-78e82b143d4bca5949d2": {
+      "path": "gone.txt",
+      "side": "old",
+      "line": 2,
+      "text": "also gone",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-16e9ac27ce2c31c3ce66": {
+      "path": "old name.py",
+      "side": "old",
+      "line": 11,
+      "text": "before",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-08f10bbcb1ecca4738c3": {
+      "path": "new name.py",
+      "side": "new",
+      "line": 21,
+      "text": "after",
+      "kind": "added",
+      "no_newline_at_eof": false
+    }
+  },
+  "provenance": {
+    "kind": "live_local_ollama",
+    "model": "qwen3.6:35b",
+    "model_digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "endpoint": "http://127.0.0.1:11434",
+    "created_at": "2026-09-11T15:43:53.612768+00:00",
+    "elapsed_seconds": 15.423,
+    "evidence_sha256": "07861b0d7b589a1612c9825aff06723fc8cced012d4b3db9e6c346f49c376a89",
+    "model_input_sha256": "0168be62ef7c8386788a8c48c6ed30b23cfd5018f98af68abe338735f12c6503",
+    "model_scope": "citable_changed_text_only",
+    "prompt_eval_count": 755,
+    "eval_count": 1255,
+    "cloud_used": false,
+    "fixture_used": false,
+    "semantic_truth_checked": false
+  },
+  "evidence_pack": {
+    "schema_version": 1,
+    "kind": "deterministic_git_diff_evidence",
+    "is_ai_review": false,
+    "changed_file_count": 5,
+    "text_added_count": 3,
+    "text_removed_count": 3,
+    "files": [
+      {
+        "old_path": null,
+        "new_path": "new.txt",
+        "status": "added",
+        "binary": false,
+        "metadata": [
+          "new file mode 100644"
+        ],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 1,
+            "text": "hello",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-80e7d61e9697f6282d6c"
+          },
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 2,
+            "text": "last",
+            "no_newline_at_eof": true,
+            "evidence_id": "E-7576363760812b4487f6"
+          }
+        ],
+        "removed_lines": [],
+        "text_added_count": 2,
+        "text_removed_count": 0
+      },
+      {
+        "old_path": "gone.txt",
+        "new_path": null,
+        "status": "deleted",
+        "binary": false,
+        "metadata": [
+          "deleted file mode 100644"
+        ],
+        "added_lines": [],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 1,
+            "new_line": null,
+            "text": "gone",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-02fda17ff6b7fc0b7cdd"
+          },
+          {
+            "kind": "removed",
+            "old_line": 2,
+            "new_line": null,
+            "text": "also gone",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-78e82b143d4bca5949d2"
+          }
+        ],
+        "text_added_count": 0,
+        "text_removed_count": 2
+      },
+      {
+        "old_path": "old name.py",
+        "new_path": "new name.py",
+        "status": "renamed",
+        "binary": false,
+        "metadata": [
+          "similarity index 90%"
+        ],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 21,
+            "text": "after",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-08f10bbcb1ecca4738c3"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 11,
+            "new_line": null,
+            "text": "before",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-16e9ac27ce2c31c3ce66"
+          }
+        ],
+        "text_added_count": 1,
+        "text_removed_count": 1
+      },
+      {
+        "old_path": "image.png",
+        "new_path": "image.png",
+        "status": "modified",
+        "binary": true,
+        "metadata": [
+          "index 1111111..2222222 100644"
+        ],
+        "added_lines": [],
+        "removed_lines": [],
+        "text_added_count": 0,
+        "text_removed_count": 0
+      },
+      {
+        "old_path": "run.sh",
+        "new_path": "run.sh",
+        "status": "modified",
+        "binary": false,
+        "metadata": [
+          "old mode 100644",
+          "new mode 100755"
+        ],
+        "added_lines": [],
+        "removed_lines": [],
+        "text_added_count": 0,
+        "text_removed_count": 0
+      }
+    ]
+  }
+}

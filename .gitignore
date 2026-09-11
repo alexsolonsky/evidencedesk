@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+fresh-*.json
+fresh-*.md
+changes.diff
+evidencedesk-review.json

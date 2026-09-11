@@ -1,0 +1,21 @@
+{
+  "kind": "historical_development_test_record",
+  "date": "2026-09-11",
+  "command": "python3 -m unittest -v",
+  "tests_passed": 27,
+  "environment": {
+    "python": "3.14",
+    "os": "macOS"
+  },
+  "source_log_sha256": "1b7d10828ba369446983c98e01be8a8c8d72a8e585c7e8284cefffc647e73c6b",
+  "raw_log_included": false,
+  "raw_log_exclusion_reason": "Machine-specific environment paths are unnecessary for the public record.",
+  "source_test_hashes": {
+    "test_evidence_pack.py": "4dd0f57a001d41c8e9d55ac6b8491f9c85af47457624ee0a8143cea2e3a75af7",
+    "test_local_flow.py": "187b3dc5ae25c2a11b77c6f40c4c2b503f120c20f027c44339899d7165e26bf8",
+    "test_validate_review.py": "d15062f0b94d48fa99e26b346ad09b60e5093938c797232baf5921b27a85c59d"
+  },
+  "live_inference_during_tests": false,
+  "model_accuracy_measured": false,
+  "note": "Deterministic tests use mocked inference; real local model responses are separate synthetic development records."
+}

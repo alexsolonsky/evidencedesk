@@ -1,0 +1,111 @@
+{
+  "review": {
+    "claims": [
+      {
+        "claim": "The condition in access.py line 20 was modified to include an additional check for 'allow_preview'.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-43ff03b6b37e7fb19447"
+        ],
+        "rationale": "The diff shows the added line 20 explicitly contains 'or allow_preview' appended to the existing condition."
+      },
+      {
+        "claim": "The original code in access.py line 20 checked only if 'user.is_admin' was true.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-e044b7b1e2717f071dbb"
+        ],
+        "rationale": "The removed line 20 explicitly shows the text 'if user.is_admin:' without additional logical operators."
+      },
+      {
+        "claim": "This change allows non-admin users to access resources if 'allow_preview' is true.",
+        "status": "uncertain",
+        "evidence_ids": [],
+        "rationale": "The diff shows the syntactic change but provides no context on how 'allow_preview' is defined or its runtime value, nor does it confirm the logical outcome for non-admin users."
+      }
+    ]
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "structural_review_validation",
+    "structurally_valid": true,
+    "semantic_truth_checked": false,
+    "notice": "Checks JSON structure and reference existence only. Does not establish that citations support claims or that claims are true.",
+    "claim_count": 3,
+    "evidence_id_count": 2,
+    "errors": []
+  },
+  "evidence_index": {
+    "E-e044b7b1e2717f071dbb": {
+      "path": "access.py",
+      "side": "old",
+      "line": 20,
+      "text": "if user.is_admin:",
+      "kind": "removed",
+      "no_newline_at_eof": false
+    },
+    "E-43ff03b6b37e7fb19447": {
+      "path": "access.py",
+      "side": "new",
+      "line": 20,
+      "text": "if user.is_admin or allow_preview:",
+      "kind": "added",
+      "no_newline_at_eof": false
+    }
+  },
+  "provenance": {
+    "kind": "live_local_ollama",
+    "model": "qwen3.6:35b",
+    "model_digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "endpoint": "http://127.0.0.1:11434",
+    "created_at": "2026-09-11T16:29:10.334197+00:00",
+    "elapsed_seconds": 13.26,
+    "evidence_sha256": "7e47afd4972a94b9dce5705620453689b3e768b15aed67ef15638d046b486d7c",
+    "model_input_sha256": "28257ef2cb8697c8ce8bde6bb055724c89a37aa2e071c7a010429e6100a62a74",
+    "model_scope": "citable_changed_text_only",
+    "prompt_eval_count": 591,
+    "eval_count": 312,
+    "cloud_used": false,
+    "fixture_used": false,
+    "semantic_truth_checked": false
+  },
+  "evidence_pack": {
+    "schema_version": 1,
+    "kind": "deterministic_git_diff_evidence",
+    "is_ai_review": false,
+    "changed_file_count": 1,
+    "text_added_count": 1,
+    "text_removed_count": 1,
+    "files": [
+      {
+        "old_path": "access.py",
+        "new_path": "access.py",
+        "status": "modified",
+        "binary": false,
+        "metadata": [],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 20,
+            "text": "if user.is_admin or allow_preview:",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-43ff03b6b37e7fb19447"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 20,
+            "new_line": null,
+            "text": "if user.is_admin:",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-e044b7b1e2717f071dbb"
+          }
+        ],
+        "text_added_count": 1,
+        "text_removed_count": 1
+      }
+    ]
+  }
+}

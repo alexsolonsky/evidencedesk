@@ -1,0 +1,255 @@
+{
+  "review": {
+    "claims": [
+      {
+        "claim": "File new.txt was created with two lines of text.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-80e7d61e9697f6282d6c",
+          "E-7576363760812b4487f6"
+        ],
+        "rationale": "The evidence shows file_status 'added' for new.txt with two added lines containing 'hello' and 'last'."
+      },
+      {
+        "claim": "File gone.txt was deleted.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-02fda17ff6b7fc0b7cdd",
+          "E-78e82b143d4bca5949d2"
+        ],
+        "rationale": "The evidence shows file_status 'deleted' for gone.txt with two removed lines containing 'gone' and 'also gone'."
+      },
+      {
+        "claim": "File old name.py was renamed to new name.py.",
+        "status": "supported",
+        "evidence_ids": [
+          "E-16e9ac27ce2c31c3ce66",
+          "E-08f10bbcb1ecca4738c3"
+        ],
+        "rationale": "The evidence shows file_status 'renamed' linking old_path 'old name.py' to new_path 'new name.py' with a removed line and an added line."
+      }
+    ]
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "structural_review_validation",
+    "structurally_valid": true,
+    "semantic_truth_checked": false,
+    "notice": "Checks JSON structure and reference existence only. Does not establish that citations support claims or that claims are true.",
+    "claim_count": 3,
+    "evidence_id_count": 6,
+    "errors": []
+  },
+  "evidence_index": {
+    "E-80e7d61e9697f6282d6c": {
+      "path": "new.txt",
+      "side": "new",
+      "line": 1,
+      "text": "hello",
+      "kind": "added",
+      "no_newline_at_eof": false,
+      "file_status": "added",
+      "old_path": null,
+      "new_path": "new.txt"
+    },
+    "E-7576363760812b4487f6": {
+      "path": "new.txt",
+      "side": "new",
+      "line": 2,
+      "text": "last",
+      "kind": "added",
+      "no_newline_at_eof": true,
+      "file_status": "added",
+      "old_path": null,
+      "new_path": "new.txt"
+    },
+    "E-02fda17ff6b7fc0b7cdd": {
+      "path": "gone.txt",
+      "side": "old",
+      "line": 1,
+      "text": "gone",
+      "kind": "removed",
+      "no_newline_at_eof": false,
+      "file_status": "deleted",
+      "old_path": "gone.txt",
+      "new_path": null
+    },
+    "E-78e82b143d4bca5949d2": {
+      "path": "gone.txt",
+      "side": "old",
+      "line": 2,
+      "text": "also gone",
+      "kind": "removed",
+      "no_newline_at_eof": false,
+      "file_status": "deleted",
+      "old_path": "gone.txt",
+      "new_path": null
+    },
+    "E-16e9ac27ce2c31c3ce66": {
+      "path": "old name.py",
+      "side": "old",
+      "line": 11,
+      "text": "before",
+      "kind": "removed",
+      "no_newline_at_eof": false,
+      "file_status": "renamed",
+      "old_path": "old name.py",
+      "new_path": "new name.py"
+    },
+    "E-08f10bbcb1ecca4738c3": {
+      "path": "new name.py",
+      "side": "new",
+      "line": 21,
+      "text": "after",
+      "kind": "added",
+      "no_newline_at_eof": false,
+      "file_status": "renamed",
+      "old_path": "old name.py",
+      "new_path": "new name.py"
+    }
+  },
+  "provenance": {
+    "kind": "live_local_ollama",
+    "model": "qwen3.6:35b",
+    "model_digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "endpoint": "http://127.0.0.1:11434",
+    "created_at": "2026-09-11T16:30:31.121927+00:00",
+    "elapsed_seconds": 18.043,
+    "evidence_sha256": "07861b0d7b589a1612c9825aff06723fc8cced012d4b3db9e6c346f49c376a89",
+    "model_input_sha256": "d6dcab41c093fcc2159ae68dfb835771b4244b9bec698636553732ffb3da9903",
+    "model_scope": "citable_changed_text_with_file_context",
+    "prompt_eval_count": 1033,
+    "eval_count": 381,
+    "cloud_used": false,
+    "fixture_response_substituted": false,
+    "semantic_truth_checked": false
+  },
+  "evidence_pack": {
+    "schema_version": 1,
+    "kind": "deterministic_git_diff_evidence",
+    "is_ai_review": false,
+    "changed_file_count": 5,
+    "text_added_count": 3,
+    "text_removed_count": 3,
+    "files": [
+      {
+        "old_path": null,
+        "new_path": "new.txt",
+        "status": "added",
+        "binary": false,
+        "metadata": [
+          "new file mode 100644"
+        ],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 1,
+            "text": "hello",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-80e7d61e9697f6282d6c"
+          },
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 2,
+            "text": "last",
+            "no_newline_at_eof": true,
+            "evidence_id": "E-7576363760812b4487f6"
+          }
+        ],
+        "removed_lines": [],
+        "text_added_count": 2,
+        "text_removed_count": 0
+      },
+      {
+        "old_path": "gone.txt",
+        "new_path": null,
+        "status": "deleted",
+        "binary": false,
+        "metadata": [
+          "deleted file mode 100644"
+        ],
+        "added_lines": [],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 1,
+            "new_line": null,
+            "text": "gone",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-02fda17ff6b7fc0b7cdd"
+          },
+          {
+            "kind": "removed",
+            "old_line": 2,
+            "new_line": null,
+            "text": "also gone",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-78e82b143d4bca5949d2"
+          }
+        ],
+        "text_added_count": 0,
+        "text_removed_count": 2
+      },
+      {
+        "old_path": "old name.py",
+        "new_path": "new name.py",
+        "status": "renamed",
+        "binary": false,
+        "metadata": [
+          "similarity index 90%"
+        ],
+        "added_lines": [
+          {
+            "kind": "added",
+            "old_line": null,
+            "new_line": 21,
+            "text": "after",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-08f10bbcb1ecca4738c3"
+          }
+        ],
+        "removed_lines": [
+          {
+            "kind": "removed",
+            "old_line": 11,
+            "new_line": null,
+            "text": "before",
+            "no_newline_at_eof": false,
+            "evidence_id": "E-16e9ac27ce2c31c3ce66"
+          }
+        ],
+        "text_added_count": 1,
+        "text_removed_count": 1
+      },
+      {
+        "old_path": "image.png",
+        "new_path": "image.png",
+        "status": "modified",
+        "binary": true,
+        "metadata": [
+          "index 1111111..2222222 100644"
+        ],
+        "added_lines": [],
+        "removed_lines": [],
+        "text_added_count": 0,
+        "text_removed_count": 0
+      },
+      {
+        "old_path": "run.sh",
+        "new_path": "run.sh",
+        "status": "modified",
+        "binary": false,
+        "metadata": [
+          "old mode 100644",
+          "new mode 100755"
+        ],
+        "added_lines": [],
+        "removed_lines": [],
+        "text_added_count": 0,
+        "text_removed_count": 0
+      }
+    ]
+  }
+}
